@@ -25,31 +25,32 @@ Files used from the HAR study include:
 - 'activity_labels.txt': Links the class labels with their activity name.
 
 The script:
-1. Merges the training and the test sets to create one data set.
-1a. The y_train.txt and subject_train.txt datasets are read into R and named "data.train.activities" and "data.train.subjects", respectively; and are assigned the column names "activity" and subject", resp.  		
-1b. The X_train.txt is read into R and named "data.train.measures"  
-1c. The "data.train.activities", "data.train.subjects" and "data.train.measures" data sets are column-bound to form one data set.
-1d-f. In the same way as above, the corresponding "test" datasets are combined to form a data set.
-1g. The training and test are combined to form one dataset using rbind().
-1h. Names from features.txt file are applied to the measurements columns 
 
-2. Extracts only the measurements on the mean and standard deviation for each measurement. 
-2a. Columns whose names contain the following character strings are extracted: "activity", "subject", "mean", "std"
-2b. From the above list, column whose names  contain "angle" at the beginning are dropped
-2c. The resulting data set is named "data.mean.std" 
+Merges the training and the test sets to create one data set.
+* a. The y_train.txt and subject_train.txt datasets are read into R and named "data.train.activities" and "data.train.subjects", respectively; and are assigned the column names "activity" and subject", resp.  		
+* b. The X_train.txt is read into R and named "data.train.measures"  
+* c. The "data.train.activities", "data.train.subjects" and "data.train.measures" data sets are column-bound to form one data set.
+* d-f. In the same way as above, the corresponding "test" datasets are combined to form a data set.
+* g. The training and test are combined to form one dataset using rbind().
+* h. Names from features.txt file are applied to the measurements columns 
 
-3. Uses descriptive activity names to name the activities in the data set. 
+Extracts only the measurements on the mean and standard deviation for each measurement. 
+* a. Columns whose names contain the following character strings are extracted: "activity", "subject", "mean", "std"
+* b. From the above list, column whose names  contain "angle" at the beginning are dropped
+* c. The resulting data set is named "data.mean.std" 
+
+Uses descriptive activity names to name the activities in the data set. 
 Lowercase descriptive names are assigned to the activities in the data set by making the activity variable a factor and assigning identifying labels (walking, walkingup, walkingdown, sitting, standing, laying)
 
-4. Appropriately labels the data set with descriptive variable names. 
+Appropriately labels the data set with descriptive variable names. 
 The column names are stripped of dashes, commas, and parentheses; and are made lowercase. 
 
-5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
-5a. The dataset is transformed (melted) so that four columns are created:
-- activity: the activity column
-- subject: the subject column
-- measure: Each row identifies a measurement (feature) for a sampled activity and subject.
-- value: Each row holds the measure's value for a given activity, subject and window sample. 
-5b. The data set is transformed again (casted) so that a mean for each measure is created for each activity-subject combination. The measure names are now included in the column names again.
+From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+* a. The dataset is transformed (melted) so that four columns are created:
+*   activity: the activity column
+*   subject: the subject column
+*   measure: Each row identifies a measurement (feature) for a sampled activity and subject.
+*   value: Each row holds the measure's value for a given activity, subject and window sample. 
+* b. The data set is transformed again (casted) so that a mean for each measure is created for each activity-subject combination. The measure names are now included in the column names again.
 
-6. The data set is written to a file named "tidydata.txt" and placed in the user's working directory.
+The data set is written to a file named "tidydata.txt" and placed in the user's working directory.
